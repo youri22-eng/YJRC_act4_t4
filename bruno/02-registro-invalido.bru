@@ -1,0 +1,27 @@
+meta {
+  name: 02 Registro con datos invalidos
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api/auth/register
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "nombre": "",
+    "email": "esto-no-es-un-email",
+    "password": "123"
+  }
+}
+
+assert {
+  res.status: eq 400
+}

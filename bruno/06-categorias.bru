@@ -1,0 +1,19 @@
+meta {
+  name: 06 Listar categorias
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/api/categorias
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+assert {
+  res.status: eq 200
+}

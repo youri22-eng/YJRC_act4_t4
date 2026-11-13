@@ -1,0 +1,32 @@
+meta {
+  name: 11 Actualizar producto (PUT)
+  type: http
+  seq: 11
+}
+
+put {
+  url: {{baseUrl}}/api/productos/{{productoId}}
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "nombre": "Laptop Gamer",
+    "precio": 15999.9,
+    "stock": 8,
+    "categoriaId": 1
+  }
+}
+
+assert {
+  res.status: eq 200
+}

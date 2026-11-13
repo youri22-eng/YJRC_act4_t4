@@ -1,0 +1,36 @@
+meta {
+  name: 07 Crear producto (POST)
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseUrl}}/api/productos
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "nombre": "Laptop",
+    "precio": 12500.5,
+    "stock": 10,
+    "categoriaId": 1
+  }
+}
+
+vars:post-response {
+  productoId: res.body.id
+}
+
+assert {
+  res.status: eq 201
+}

@@ -1,0 +1,26 @@
+meta {
+  name: 04 Login con contrasena incorrecta
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/api/auth/login
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "email": "youri@correo.com",
+    "password": "contrasena-equivocada"
+  }
+}
+
+assert {
+  res.status: eq 401
+}
